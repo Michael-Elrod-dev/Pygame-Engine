@@ -40,6 +40,7 @@ class Animation(pygame.sprite.Sprite):
             if self.particle_frame_index >= len(self.run_particles):
                 self.particle_frame_index = 0
 
+            # Switches Particle Pos To Player Direction
             particles = self.run_particles[int(self.particle_frame_index)]
             if self.facing_right:
                 pos = self.rect.bottomleft - pygame.math.Vector2(-5, 10)

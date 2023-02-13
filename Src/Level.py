@@ -22,6 +22,7 @@ class Level:
         self.particle_sprite.add(jump_particle)
 
 
+    # Checks If Player Lost/Regain Ground Contact
     def init_landing_particles(self):
         if not self.player_on_ground and self.player.sprite.on_ground and not self.particle_sprite.sprites():
             offset = pygame.math.Vector2(0,20)
@@ -62,6 +63,7 @@ class Level:
         player_x = player.rect.centerx
         direction_x = player.direction.x
         
+        # Control Camera Relative To Player Pos
         if player_x < (screen_width/3) and direction_x < 0:
             self.world_shift = 8
             player.speed = 0
@@ -89,6 +91,7 @@ class Level:
                     player.on_right = True
                     self.current_x = player.rect.right
 
+        # Reset Left/Right Contact Checks
         if player.on_left and (player.rect.left < self.current_x or player.direction.x >= 0):
             player.on_left = False
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
@@ -112,6 +115,7 @@ class Level:
                     player.direction.y = 0
                     player.on_ceiling = True
 
+        # Reset Ground/Ceiling Checks
         if player.on_ground and player.direction.y < 0 or player.direction.y > 1:
             player.on_ground = False
         if player.on_ceiling and player.direction.y > 0.1:
