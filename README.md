@@ -1,28 +1,11 @@
-# Intro Game
+## Dr. Adkins' Zombie Lab Escape - Michael Elrod
 
-Dungeon.py
+#Motivation
+I wanted to go with something basic but also something I dont have experience with which was sprites that had a lot of animations and effects. My inspiration for this is sort of like a game called Vagante which is a 2D dungeon clearing game.
 
-References
-  - https://www.youtube.com/watch?v=YWN8GcmJ-jA - Tutorial
-  - opengameart.org - Art
-  - ? - Sound/Music
+#Reasoning
+I went with the stucture that i did becasue I have already built a 2D game engine in C++ so I mostly just transfered over a lot of the logic from that but simpified it since python works a bit differetly
 
-Platformer
-  - Jumps up and down
-  - Gaps to fall through
-  - Maybe some moving platforms
-  - Boss at the end that shoots projectiles
-  - Sprites and background from opengameart.org (check license)
-  - Sound FX
-  - Music?
-  
-Controls
-  - Jump
-  - Shoot
-  - left-right movement
+#Images
 
-Entites
-  - Player
-  - Boss
-  - Projectiles
-  - Platforms
+#Future Work
