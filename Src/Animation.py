@@ -33,6 +33,7 @@ class Animation(pygame.sprite.Sprite):
             self.rect = self.image.get_rect(midtop = self.rect.midtop)
 
 
+    # Loop Run Particles
     def particle_run_animation(self):
         if self.status == 'run' and self.on_ground:
             self.particle_frame_index += self.particle_animation_speed
