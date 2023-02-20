@@ -64,10 +64,10 @@ class Level:
         direction_x = player.direction.x
         
         # Control Camera Relative To Player Pos
-        if player_x < (screen_width/2) and direction_x < 0:
+        if player_x < (screen_width/3) and direction_x < 0:
             self.world_shift = 8
             player.speed = 0
-        elif player_x > (screen_width - (screen_width/2)) and direction_x > 0:
+        elif player_x > (screen_width - (screen_width/3)) and direction_x > 0:
             self.world_shift = -8
             player.speed = 0
         else:
