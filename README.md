@@ -1,10 +1,10 @@
 # Dr. Adkins' Zombie Lab Escape - Michael Elrod
 
 ## Motivation
-I wanted to go with something basic but also something I dont have experience with which was sprites that had a lot of animations and effects. My inspiration for this is sort of like a game called Vagante which is a 2D dungeon clearing game.
+I have created a 2D game engine before in C++, but the game I built with it was a top down game that didnt have a platform the player could move on. So for this project I wanted to try doing a side scrolling style game like classic Mario or Vagante on Steam.
 
 ## Reasoning
-I went with the stucture that i did becasue I have already built a 2D game engine in C++ so I mostly just transfered over a lot of the logic from that but simpified it since python works a bit differetly
+I went with the stucture that I did becasue I have already built a 2D game engine in C++ so I mostly just transfered over a lot of the logic from that but simpified it since python works a bit differetly. I have classes that just simply hold data or do work for other classes (Models), classes that interact between game objects, the player and the level (Controllers), and the classes that handle the calls to render objects on the screen (View).
 
 ## Images
 
