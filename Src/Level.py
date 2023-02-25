@@ -3,18 +3,36 @@ from Src.Tiles import Tile
 from Src.Settings import tile_size, screen_width
 from Src.Player import Player
 from Src.Effects import Effects
+from Src.Assets import *
 
 
 class Level:
     # Level Setup
     def __init__(self, level_data, surface):
         self.display_surface = surface
-        self.setup_level(level_data)
-        self.world_shift = 0        
+        self.world_shift = 0
+        terrain_layout = import_csv(level_data['terrain'])
+        self.terrain_sprites = self.create_tile_group(terrain_layout, 'terrain')
 
         # Particles
         self.particle_sprite = pygame.sprite.GroupSingle()
         self.player_on_ground = False
+
+
+    # Place Map Tiles
+    def create_tile_group(self, layout, type):
+        sprite_group = pygame.sprite.Group()
+        for row_index, row in enumerate(layout):
+            for col_index, value in enumerate(row):
+                if value != '-1':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    
+                    if type == 'terrain':
+                        sprite = Tile(tile_size, x, y)
+                        sprite_group.add(sprite)
+                        
+        return sprite_group
 
 
     def init_jump_particles(self, pos):
@@ -28,25 +46,6 @@ class Level:
             offset = pygame.math.Vector2(0,20)
             landing_particle = Effects(self.player.sprite.rect.midbottom - offset, 'land')
             self.particle_sprite.add(landing_particle)
-
-    
-    # Place Map Tiles
-    def setup_level(self, layout):
-        self.tiles = pygame.sprite.Group()
-        self.player = pygame.sprite.GroupSingle()
-        
-        # Enumerate method gets the position & the information
-        for row_index,row in enumerate(layout):
-            for col_index,col in enumerate(row):
-                x = col_index * tile_size
-                y = row_index * tile_size
-                
-                if col == 'X':
-                    tile = Tile((x, y), tile_size)
-                    self.tiles.add(tile)
-                if col == 'P':
-                    player_sprite = Player((x, y), self.display_surface, self.init_jump_particles)
-                    self.player.add(player_sprite)
     
     
     # To Animate Landing Particle

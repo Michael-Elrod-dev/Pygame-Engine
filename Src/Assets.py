@@ -1,5 +1,6 @@
 # Walk: Searches through directories
 from os import walk
+from csv import reader
 import pygame
 
 
@@ -30,3 +31,12 @@ def import_assests(self):
 # Find Particle Assets
 def import_particles(self):
     self.run_particles = import_folder('Assets/Character/particles/run')
+    
+
+def import_csv(path):
+    terrain_map = []
+    with open(path) as map:
+        level = reader(map, delimiter =  ',')
+        for row in level:
+            terrain_map.append(list(row))
+        return terrain_map

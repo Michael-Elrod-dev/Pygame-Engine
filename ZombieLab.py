@@ -6,7 +6,7 @@ from Src.Level import Level
 # Initialize Window
 pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Dr. Adkins' Zombie Lab Escape!")
+pygame.display.set_caption("Zombie Lab Escape!")
 clock = pygame.time.Clock()
 level = Level(level_data, screen)
 
