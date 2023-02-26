@@ -6,6 +6,7 @@ I have created a 2D game engine before in C++, but the game I built with it was 
 ## Reasoning
 I went with the stucture that I did becasue I have already built a 2D game engine in C++ so I mostly just transfered over a lot of the logic from that but simpified it since python works a bit differetly. I have classes that just simply hold data or do work for other classes (Models), classes that interact between game objects, the player and the level (Controllers), and the classes that handle the calls to render objects on the screen (View).
 
-## Images
+## Work Flow
+![Game Loop](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Main.png)
 
 ## Future Work
