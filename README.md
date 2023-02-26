@@ -38,7 +38,7 @@ Tiles.py - This file initializes the tiles and moves them based on the camera sh
 
 Effects.py - This file initializes and updates the effect sprites based on the camera shift which is based on player input.
 
-### Setting
+### Settings
 ![Settings](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Settings.png)
 
 Settings.py - This file holds hard codeded setting like the terrain structure, the size of the game window and the tile size.
