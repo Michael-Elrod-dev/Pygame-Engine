@@ -8,5 +8,8 @@ I went with the stucture that I did becasue I have already built a 2D game engin
 
 ## Work Flow
 ![Game Loop](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Main.png)
+Main.py - This file initializes the screen to render on and runns the "game loop" for the suration of the game. The game update function is level.run().
+
+![World Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Src/Level.py)
 
 ## Future Work
