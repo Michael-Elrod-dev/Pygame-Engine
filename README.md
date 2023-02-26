@@ -1,4 +1,4 @@
-# Dr. Adkins' Zombie Lab Escape - Michael Elrod
+### Zombie Lab Escape - Michael Elrod
 
 ## Motivation
 I have created a 2D game engine before in C++, but the game I built with it was a top down game that didnt have a platform the player could move on. So for this project I wanted to try doing a side scrolling style game like classic Mario or Vagante on Steam.
