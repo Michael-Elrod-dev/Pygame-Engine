@@ -10,7 +10,7 @@ I went with the stucture that I did becasue I have already built a 2D game engin
 ### Game Loop
 ![Game Loop](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Main.png)
 
-Main.py - This file initializes the screen to render on and runns the "game loop" for the suration of the game. The game update function is level.run().
+Main.py - This file initializes the screen to render on and runs the "game loop" for the suration of the game. The game update function is level.run().
 
 ### World Initialization
 ![World Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Level.png)
@@ -49,3 +49,5 @@ I had planned to bring this project much further but I had many time conflicts w
 As I review the program I struggle to find any portion of the engine that would not be considered a generic implementation. For the most part this engine lacks quite a few components and capabilities but the ones that are implemented are done so in a way that the world and player character can be changed to anything within the realm of a 2D platformer by simply changing the PNG files within the project and creating a new level_data map in the Settings.py file. One mistake about this implementation that is very different from my C++ engine is that the developer cannot choose which "components" an entity has. For example, the player charcter can always jump once and moves at the same speed. Although the sprites for animation and the character can be changed, the abilities of the charcter are hard coded (although easily changed). I hope to implement this in the future as well as the following: enemies, attacks, terrain sprites,  background image, user interface and SFX/music.
 
 
+## Contributions
+In order to learn more about implementing the animation methods by searching thorugh directories in Python as well as some of the method structures needed for the collision detection and map structuring in this project I referenced a few videos made by Clear Code on youtube.
