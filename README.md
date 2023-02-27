@@ -4,7 +4,7 @@
 I have created a 2D game engine before in C++ which can be viewed [HERE](https://github.com/Michael-Elrod-dev/2DGameEngine), but the game I built with it was a top down game that didnt have a platform the player could move on. So for this project I wanted to try doing a side scrolling style game like classic Mario or Vagante on Steam.
 
 ## Reasoning
-I went with the stucture that I did becasue I have already built a 2D game engine in C++ so I mostly just transfered over a lot of the logic from that but simpified it since python works a bit differetly. I have classes that just simply hold data or do work for other classes (Models), classes that interact between game objects, the player and the level (Controllers), and the classes that handle the calls to render objects on the screen (View).
+I went with the stucture that I did becasue I have already built a 2D game engine in C++ so I mostly just transfered over a lot of the logic from that but simpified it since python works a bit differetly. I have classes that just simply hold data or do supportive work for other classes (Models) like importing assets, classes that track interactions between game objects, the player and the level (Controllers), and the classes that handle the calls to render objects on the screen (View).
 
 ## Work Flow
 ### Game Loop
@@ -15,12 +15,12 @@ Main.py - This file initializes the screen to render on and runs the "game loop"
 ### World Initialization
 ![World Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Level.png)
 
-Level.py - This file handles the terrain setup and camera view as well as the state of the game and player. This file also tracks all collisions between the player sprite and the terrain. Here is the update fuction within Level.py.
+Level.py - This file is the core of the porject. It handles the initialization of objects, terrain setup, camera view as well as the state of the game and player. This file also tracks all collisions between the player sprite and the terrain. Here is the update fuction within Level.py which runs every frame updating all sprites based on user input.
 
 ### Player Initialization
 ![Player Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Player.png)
 
-Player.py - This file handles the players status by getting user input and imports assets. Here is the update function within Player.py.
+Player.py - This file handles the players status by getting user input and updates the status of the player character based on its velocity. This file also calls the classes that import game assets. Here is the update function within Player.py.
 
 ### Animation
 ![Animation](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Animation.png)
@@ -31,12 +31,12 @@ Animation.py - This file handles changing the sprite to poroduce an animation ef
 ### Tiles
 ![Tiles](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Tiles.png)
 
-Tiles.py - This file initializes the tiles and moves them based on the camera shift which is based on player input.
+Tiles.py - This file initializes the tiles and moves them based on the camera shift which is based on player input. The update function runs eveyr frame called by Level.py
 
 ### Effects
 ![Effects](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Effects.png)
 
-Effects.py - This file initializes and updates the effect sprites based on the camera shift which is based on player input.
+Effects.py - This file is responsible for looping the particle animations 1 time per player status. Ex: jumping and landing.
 
 ### Settings
 ![Settings](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Settings.png)
