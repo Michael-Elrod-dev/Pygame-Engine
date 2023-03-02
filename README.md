@@ -3,6 +3,9 @@
 ## Game Image
 ![Game](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Game.png)
 
+## Sprites
+All sprites used in this project can be found in the /Assets/ folder. These sprites were bought from Craftpix.net by me.
+
 ## Program Versions
 OS Version: Ubuntu 22.04.1 LTS<br>
 Python Version: Python 3.10.6<br>
@@ -41,6 +44,11 @@ Animation.py - This file handles changing the sprite to produce an animation eff
 ![Tiles](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Tiles.png)
 
 Tiles.py - This file initializes the tiles and moves them based on the camera shift which is based on player input. The update function runs every frame called by Level.py
+
+### Assets
+![Assets](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Assets.png)
+
+Assets.py - This file is responsible for importing the sprite png's and based on the players status from the Assets folder.
 
 ### Effects
 ![Effects](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Effects.png)
