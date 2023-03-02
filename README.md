@@ -50,7 +50,7 @@ As I review the program I struggle to find any portion of the engine that would 
 
 
 ## Diagram
-![Diagram](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Diagram.drawio.png)
+![Diagram](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Diagram.png)
 
 ## Contributions
 In order to learn more about implementing the animation methods by searching thorugh directories in Python as well as some of the method structures needed for the collision detection and map structuring in this project I referenced a few videos made by Clear Code on youtube.
