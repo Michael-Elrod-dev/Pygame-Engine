@@ -4,9 +4,9 @@
 ![Game](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Game.png)
 
 ## Program Versions
-OS Version: Ubuntu 22.04.1 LTS
-Python Version: Python 3.10.6
-Pygame Version: Pygame 2.1.2
+OS Version: Ubuntu 22.04.1 LTS<br>
+Python Version: Python 3.10.6<br>
+Pygame Version: Pygame 2.1.2<br>
 Enviorment: Visual Studio Code
 
 ## Motivation
