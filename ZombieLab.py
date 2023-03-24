@@ -1,6 +1,5 @@
 import pygame, sys, Src
 from Src.Settings import *
-from Src.Tiles import Tile
 from Src.Level import Level
 
 # Initialize Window
@@ -8,7 +7,7 @@ pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Zombie Lab Escape!")
 clock = pygame.time.Clock()
-level = Level(level_data, screen)
+level = Level(level_0, screen)
 
 # Game Loop
 while True:

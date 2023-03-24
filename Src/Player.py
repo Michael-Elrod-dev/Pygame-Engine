@@ -6,7 +6,7 @@ class Player(pygame.sprite.Sprite):
     # Initialize Player Character
     def __init__(self, pos, surface, init_jump_particles):
         super().__init__()
-        import_assests(self)
+        import_assets(self)
         self.frame_index = 0
         self.animation_speed = 0.15
         self.image = self.animations['idle'][self.frame_index]
