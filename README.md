@@ -22,38 +22,42 @@ I used a similar structure for this project as my C++ game engine, but simplifie
 ### Game Loop
 ![Game Loop](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Main.png)
 
-Main.py - This file initializes the screen and runs the "game loop" for the duration of the game. The game update function is level.run().
+Main.py - This file initializes the screen and runs the "game loop" for the duration of the game based on the level passed into the Level class from the settings file. The game update function is level.run().
 
 ### World Initialization
 ![World Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Level.png)
 
-Level.py - This file is the core of the project. It handles object initialization, terrain setup, camera view, and the state of the game and player. This file also tracks all collisions between the player sprite and the terrain. Here is the update function within Level.py which runs every frame and updates all sprites based on user input.
+Level.py - This file is the core of the project. It handles object initialization, terrain setup, camera view, and the state of the game and player. This file also tracks all collisions between the player sprite the terrain, enemies and coins. The update function within Level.py which runs every frame and updates all sprites based on user input and camera movement.
 
 ### Player Initialization
 ![Player Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Player.png)
 
-Player.py - This file handles the player's status by getting user input and updating the status of the player character based on its velocity. This file also calls the classes that import game assets. Here is the update function within Player.py.
+Player.py - This file handles the player's status by getting user input and updating the status of the player character based on its velocity and applys gravity. This file also calls the classes that import game assets. The update function within Player.py runs every frame.
 
 ### Animation
 ![Animation](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Animation.png)
-![Animation2](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Animation2.png)
 
-Animation.py - This file handles changing the sprite to produce an animation effect on the player character based on input. Animation.py is run on update and does not update itself.
+Animation.py - This file is used the sprite to produce an animation effect on the player character based on input like changing direction. Animation.py is run on update and does not update itself.
 
 ### Tiles
 ![Tiles](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Tiles.png)
 
-Tiles.py - This file initializes the tiles and moves them based on the camera shift which is based on player input. The update function runs every frame called by Level.py
+Tiles.py - This file initializes the tiles and moves them based on the camera shift which is based on player input. This includes enemies, coins and eventually more. This class is called from other classes and does not update itself.
 
 ### Assets
 ![Assets](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Assets.png)
 
-Assets.py - This file is responsible for importing the sprite png's and based on the players status from the Assets folder.
+Assets.py - This file is responsible for importing the sprite png's for the game. This includes the CSV file for the map, the setions of the tiles image and particles.
 
 ### Effects
 ![Effects](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Effects.png)
 
 Effects.py - This file is responsible for looping the particle animations one time per player status, such as jumping and landing.
+
+### Enemy
+![Enemy](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Enemy.png)
+
+Enemy.py - This file is responsible for controlling the movement speeds and animations for the enemy tiles based on map constraints in the CSV file from settings.
 
 ### Settings
 ![Settings](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Settings.png)
