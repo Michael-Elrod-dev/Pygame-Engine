@@ -33,7 +33,6 @@ class Player(pygame.sprite.Sprite):
         self.on_ceiling = False
         self.on_left = False
         self.on_right = False
-
     
     # Get User Input
     def get_input(self):
@@ -51,8 +50,7 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_SPACE] and self.direction.y > 0 and self.jump_cooldown < 1:# Jump 
             self.jump()
             self.init_jump_particles(self.rect.midbottom)
-       
-            
+                 
     # Get Player Character Status
     def get_status(self):
         if self.direction.y < 0:
@@ -64,19 +62,16 @@ class Player(pygame.sprite.Sprite):
         else:
             self.status = 'idle'
 
-
     # Apply Gravity To Character
     def apply_gravity(self):
         self.direction.y += self.gravity
         self.rect.y += self.direction.y
-       
-    
+         
     # Initiate Jump Velocity
     def jump(self):
         self.jump_cooldown += 1
         self.direction.y = self.jump_speed
-
-    
+  
     # Update Functions 
     def update(self):
         self.get_input()

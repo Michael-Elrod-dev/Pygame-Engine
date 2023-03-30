@@ -130,7 +130,6 @@ class Level:
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
             player.on_right = False
           
-          
     # Y Axis Colission Checking          
     def vertical_collision(self):
         player = self.player.sprite
