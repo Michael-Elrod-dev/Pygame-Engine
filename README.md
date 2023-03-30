@@ -65,7 +65,8 @@ Enemy.py - This file is responsible for controlling the movement speeds and anim
 Settings.py - This file holds hard-coded settings like the terrain structure, the size of the game window, and the tile size.
 
 ## Future Work
-Crossed out sections have been added to the game since the last update. ~~EDxample.~~
+Crossed out sections have been added to the game since the last update. ~~Example.~~
+
 ~~I had planned to bring this project much further, but I had many conflicts with exams, interviews, and other coursework. As the project currently stands, the developer can upload any sprite images to the appropriate files. As long as they are correctly sized, the landscape and player character can be reimagined into any form, making this implementation quite generic in terms of a 2D platformer. The implementation for importing assets uses a Python built-in function to search folders and loop through their full contents. This way, not only different images can be used, but animation frames can easily be reduced or extended.~~
 
 As I review the program, I struggle to find any portion of the engine that would not be considered a generic implementation. For the most part, this engine lacks quite a few components and capabilities, but the ones that are implemented are done so in a way that the world and player character can be changed to anything within the realm of a 2D platformer by simply changing the PNG files within the project and creating a new level CSV file in Settings.py. The only thing I can think of is that my game currently does not allow the player to move the camera up and down but only left and right. If I were to implement this, you could even change the assets in the Assets folder to make a top down 2d game with this engine instead of a side scroller.
