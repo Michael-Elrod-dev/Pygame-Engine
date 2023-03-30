@@ -24,7 +24,7 @@ class Effects(pygame.sprite.Sprite):
         else:
             self.image = self.frames[int(self.frame_index)]
 
-    
+    # Update
     def update(self, camera_x):
         self.animate()
         self.rect.x += camera_x

@@ -3,16 +3,17 @@ from os import walk
 from csv import reader
 from Src.Settings import tile_size
 
+# Open and read CSV file from path
 def import_csv_layout(path):
     terrain_map = []
 
-    # Open CSV file through path
     with open(path) as map:
         level = reader(map, delimiter = ',')
         for row in level:
             terrain_map.append(list(row))
         return terrain_map
     
+# Cut PNG into sections for tiles
 def import_cut_graphics(path):
     surface = pygame.image.load(path).convert_alpha()
     tile_num_x = int(surface.get_size()[0] / tile_size)

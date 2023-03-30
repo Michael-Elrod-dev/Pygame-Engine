@@ -7,6 +7,7 @@ from Src.Player import Player
 from Src.Effects import Effects
 
 class Level:
+    # Initialize
     def __init__(self, level_data, surface):
         # Init Settings
         self.display_surface = surface
@@ -39,6 +40,7 @@ class Level:
         constraint_layout = import_csv_layout(level_data['constraints'])
         self.constraint_sprites = self.create_tile_group(constraint_layout,'constraint')
 
+    # Place player sprite and end goal
     def player_setup(self, layout):
         for row_index, row in enumerate(layout):
             for col_index, value in enumerate(row):
@@ -84,11 +86,13 @@ class Level:
             
         return sprite_group
 
+    # Check enemy collision with map constraints
     def enemy_collision(self):
         for enemy in self.enemy_sprites.sprites():
             if pygame.sprite.spritecollide(enemy, self.constraint_sprites, False):
                 enemy.reverse()
 
+    # Create jump particles (player)
     def init_jump_particles(self, pos):
         jump_particle = Effects(pos, 'jump')
         self.particle_sprite.add(jump_particle)
@@ -171,6 +175,7 @@ class Level:
             self.world_shift = 0
             player.speed = 8
 
+    # Update
     def run(self):
         # Terrain
         self.terrain_sprites.update(self.world_shift)

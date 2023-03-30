@@ -2,11 +2,13 @@ import pygame
 from Src.Assets import import_folder
 
 class Tile(pygame.sprite.Sprite):
+    # Initialize
     def __init__(self, size, x, y):
         super().__init__()
         self.image = pygame.Surface((size, size))
         self.rect = self.image.get_rect(topleft = (x, y))
 
+    # Update
     def update(self, shift):
         self.rect.x += shift
 
@@ -17,12 +19,14 @@ class StaticTile(Tile):
         self.image = surface
 
 class AnimatedTile(Tile):
+    # Initialize
     def __init__(self, size, x, y, path):
         super().__init__(size, x, y)
         self.frames = import_folder(path)
         self.frame_index = 0
         self.image = self.frames[self.frame_index]
 
+    # Move tiles based on camera shift
     def animate(self):
         self.frame_index += 0.15
         if self.frame_index >= len(self.frames):
@@ -30,11 +34,13 @@ class AnimatedTile(Tile):
 
         self.image = self.frames[int(self.frame_index)]
 
+    # Update
     def update(self,shift):
         self.animate()
         self.rect.x += shift
 
 class Coin(AnimatedTile):
+    # Initialize
     def __init__(self, size, x, y, path):
         super().__init__(size, x, y, path)
         center_x = x + int(size / 2)
