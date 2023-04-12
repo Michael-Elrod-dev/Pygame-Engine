@@ -1,10 +1,10 @@
 import pygame
 from Src.Assets import *
-from Src.Animation import *
+from math import sin
 
 class Player(pygame.sprite.Sprite):
     # Initialize Player Character
-    def __init__(self, pos, surface, init_jump_particles):
+    def __init__(self, pos, surface, init_jump_particles, change_health):
         super().__init__()
         import_assets(self)
         self.frame_index = 0
@@ -20,8 +20,8 @@ class Player(pygame.sprite.Sprite):
         self.init_jump_particles = init_jump_particles
 
         # Movement
-        self.speed = 8
         self.direction = pygame.math.Vector2(0, 0)
+        self.speed = 8
         self.gravity = 0.8
         self.jump_speed = -16
         self.jump_cooldown = 0
@@ -33,6 +33,63 @@ class Player(pygame.sprite.Sprite):
         self.on_ceiling = False
         self.on_left = False
         self.on_right = False
+        
+        # Health
+        self.change_health = change_health
+        self.invincible = False
+        self.invincibility_duration = 500
+        self.hurt_time = 0
+    
+    # Animate Player Movement
+    def animate(self):
+        animation = self.animations[self.status]
+
+        self.frame_index += self.animation_speed
+        if self.frame_index >= len(animation):
+            self.frame_index = 0
+
+        image = animation[int(self.frame_index)]
+        if self.facing_right:
+            self.image = image
+        else:
+            flipped_image = pygame.transform.flip(image,True,False)
+            self.image = flipped_image
+        if self.invincible:
+            alpha = self.wave_value()
+            self.image.set_alpha(alpha)
+        else:
+            self.image.set_alpha(255)
+
+        # Set Rect Position
+        if self.on_ground and self.on_right:
+            self.rect = self.image.get_rect(bottomright = self.rect.bottomright)
+        elif self.on_ground and self.on_left:
+            self.rect = self.image.get_rect(bottomleft = self.rect.bottomleft)
+        elif self.on_ground:
+            self.rect = self.image.get_rect(midbottom = self.rect.midbottom)
+        elif self.on_ceiling and self.on_right:
+            self.rect = self.image.get_rect(topright = self.rect.topright)
+        elif self.on_ceiling and self.on_left:
+            self.rect = self.image.get_rect(topleft = self.rect.topleft)
+        elif self.on_ceiling:
+            self.rect = self.image.get_rect(midtop = self.rect.midtop)
+
+    # Loop Run Particles
+    def particle_run_animation(self):
+        if self.status == 'run' and self.on_ground:
+            self.particle_frame_index += self.particle_animation_speed
+            if self.particle_frame_index >= len(self.run_particles):
+                self.particle_frame_index = 0
+
+            # Switches Particle Pos To Player Direction
+            particles = self.run_particles[int(self.particle_frame_index)]
+            if self.facing_right:
+                pos = self.rect.bottomleft - pygame.math.Vector2(-5, 10)
+                self.display_surface.blit(particles, pos)
+            else:
+                pos = self.rect.bottomright - pygame.math.Vector2(15, 10)
+                flipped_particle = pygame.transform.flip(particles,True,False)
+                self.display_surface.blit(flipped_particle, pos)
     
     # Get User Input
     def get_input(self):
@@ -72,9 +129,31 @@ class Player(pygame.sprite.Sprite):
         self.jump_cooldown += 1
         self.direction.y = self.jump_speed
   
-    # Update Functions 
+    # Register Player Damage
+    def get_damage(self):
+        if not self.invincible:
+            self.change_health(-10)
+            self.invincible = True
+            self.hurt_time = pygame.time.get_ticks()
+
+    # Invulnerable Frames
+    def invincibility_timer(self):
+        if self.invincible:
+            current_time = pygame.time.get_ticks()
+            if current_time - self.hurt_time >= self.invincibility_duration:
+                self.invincible = False
+
+    # Big Math
+    def wave_value(self):
+        value = sin(pygame.time.get_ticks())
+        if value >= 0: return 255
+        else: return 0
+  
+    # Update
     def update(self):
         self.get_input()
         self.get_status()
-        Animation.animate(self)
-        Animation.particle_run_animation(self)
+        self.animate()
+        self.particle_run_animation()
+        self.invincibility_timer()
+        self.wave_value()
