@@ -10,7 +10,7 @@ All sprites used in this project can be found in the /Assets/ folder. These spri
 OS Version: Ubuntu 22.04.1 LTS<br>
 Python Version: Python 3.10.6<br>
 Pygame Version: Pygame 2.1.2<br>
-Enviorment: Visual Studio Code
+Environment: Visual Studio Code
 
 ## Motivation
 I have created a 2D game engine before in C++ which can be viewed [HERE](https://github.com/Michael-Elrod-dev/2DGameEngine), but the game I built with it was a top-down game that didn't have a platform the player could move on. For this project, I wanted to challenge myself by creating a side-scrolling game like classic Mario or Vagante on Steam.
@@ -37,7 +37,7 @@ Level.py - This file is the core of the project. It handles object initializatio
 ### Player Initialization
 ![Player Initialization](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Player.png)
 
-Player.py - This file handles the player's status by getting user input and updating the status of the player character based on its velocity and applys gravity. This file also calls the classes that import game assets. The update function within Player.py runs every frame.
+Player.py - This file handles the player's status by getting user input and updating the status of the player character based on its velocity and applies gravity. This file also calls the classes that import game assets. The update function within Player.py runs every frame.
 
 ### User Interface
 ![UI](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/UI.png)
@@ -54,10 +54,15 @@ Tiles.py - This file initializes the 64x64 tiles and moves them based on the cam
 
 Assets.py - This file is responsible for importing the sprite PNG's for the game. This includes the CSV file for the map, the setions of the tiles image, and player particles.
 
+### Decorations
+![Decorations](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Decoration.png)
+
+Decorations.py - This file initializes sprites in the background and renders them.
+
 ### Effects
 ![Effects](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Effects.png)
 
-Effects.py - This file is responsible for looping the particle animations one time per player status, such as jumping, landing, and dieing.
+Effects.py - This file is responsible for looping the particle animations one time per player status, such as jumping, landing, and dying.
 
 ### Enemy
 ![Enemy](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Enemy.png)
@@ -70,7 +75,7 @@ Enemy.py - This file is responsible for controlling the movement speeds and anim
 Settings.py - This file holds the CSV file paths which are the foundation for the level structure as well as the settings for tile size and screen size.
 
 ## Future Work
-As the engine grows larger with each milestone it slowly becomes slightly more specific towards this specific game and is losing its generic implementations. I am constantly trying to find new ways to acheive the same outputs in order to try and keep the implementations as generic as possible as well as keeping editable parts of the code in one place. For example I try to keep all file path inputs for asset initialization in 1 or 2 files to allow for easy modification. Some things that are not so generic that the camera still does not follow the player on the Y axis. If this were implemented then you could truly create and 2D platformer or top down game with this code. In its current state it would be a very simple game but defintley possible.
+As the engine grows larger with each milestone it slowly becomes slightly more specific towards this specific game and is losing its generic implementations. I am constantly trying to find new ways to achieve the same outputs in order to try and keep the implementations as generic as possible as well as keeping editable parts of the code in one place. For example I try to keep all file path inputs for asset initialization in 1 or 2 files to allow for easy modification. Some things that are not so generic that the camera still does not follow the player on the Y axis. If this were implemented then you could truly create and 2D platformer or top down game with this code. In its current state it would be a very simple game but definitely possible.
 
 One mistake about this implementation that is very different from my C++ engine is that the developer cannot choose which "components" an entity has. For example, the player character can always jump once and move at the same speed. Although the sprites for animation and the character can be changed, the abilities of the character are hard-coded (although easily changed). I hope to implement this in the future, as well as the following: fixed enemy death animations, player death animation, pause menu, and SFX/music.
 
