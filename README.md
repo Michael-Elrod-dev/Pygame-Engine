@@ -81,7 +81,7 @@ One mistake about this implementation that is very different from my C++ engine 
 
 
 ## Diagram
-![Diagram](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/Diagram.png)
+![Diagram](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/GameDiagram.png)
 
 ## Contributions
 In order to learn more about implementing the animation methods by searching through directories in Python, as well as some of the method structures needed for collision detection and map structuring in this project, I referenced a few videos made by Clear Code on YouTube
