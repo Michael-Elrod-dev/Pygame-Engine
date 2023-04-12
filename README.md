@@ -1,6 +1,6 @@
 # Zombie Lab Escape - Michael Elrod
 
-## Game Image
+## In-Game Image
 ![Game](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/InGame.png)
 
 ## Sprites
