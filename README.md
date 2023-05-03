@@ -11,6 +11,7 @@ OS Version: Ubuntu 22.04.1 LTS<br>
 Python Version: Python 3.10.6<br>
 Pygame Version: Pygame 2.1.2<br>
 Environment: Visual Studio Code
+Video: https://youtu.be/_754X8bVQW0
 
 ## Motivation
 I have created a 2D game engine before in C++ which can be viewed [HERE](https://github.com/Michael-Elrod-dev/2DGameEngine), but the game I built with it was a top-down game that didn't have a platform the player could move on. For this project, I wanted to challenge myself by creating a side-scrolling game like classic Mario or Vagante on Steam.
