@@ -15,7 +15,8 @@ Video: https://youtu.be/_754X8bVQW0
 
 ## How to play
 1. Download the full repository<br>
-2. Run the program from within its directory using the software listed above:
+2. Make sure you have the software versions listed above
+3. Run the program with the following command:
 ```bash
 python3 Game.py
 ```
