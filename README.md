@@ -10,7 +10,7 @@ All sprites used in this project can be found in the /Assets/ folder. These spri
 OS Version: Ubuntu 22.04.1 LTS<br>
 Python Version: Python 3.10.6<br>
 Pygame Version: Pygame 2.1.2<br>
-Environment: Visual Studio Code
+Environment: Visual Studio Code<br>
 Video: https://youtu.be/_754X8bVQW0
 
 ## Motivation
