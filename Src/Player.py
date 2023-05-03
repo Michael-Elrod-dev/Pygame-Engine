@@ -25,6 +25,10 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 0.8
         self.jump_speed = -16
         self.jump_cooldown = 0
+        width_diff = 64 - 50
+        offset = width_diff // 2
+        new_topleft = (self.rect.x + offset, self.rect.y)
+        self.collision_rect = pygame.Rect(new_topleft, (50, self.rect.height))
 
         # Status
         self.status = 'idle'
@@ -39,6 +43,12 @@ class Player(pygame.sprite.Sprite):
         self.invincible = False
         self.invincibility_duration = 500
         self.hurt_time = 0
+        
+        # Audio
+        self.jump_sound = pygame.mixer.Sound('Assets/Audio/jump.wav')
+        self.jump_sound.set_volume(0.2)
+        self.hit_sound = pygame.mixer.Sound('Assets/Audio/hit.wav')
+        self.hit_sound.set_volume(.2)
     
     # Animate Player Movement
     def animate(self):
@@ -51,28 +61,18 @@ class Player(pygame.sprite.Sprite):
         image = animation[int(self.frame_index)]
         if self.facing_right:
             self.image = image
+            self.rect.bottomleft = self.collision_rect.bottomleft
         else:
             flipped_image = pygame.transform.flip(image,True,False)
             self.image = flipped_image
+            self.rect.bottomright = self.collision_rect.bottomright
         if self.invincible:
             alpha = self.wave_value()
             self.image.set_alpha(alpha)
         else:
             self.image.set_alpha(255)
-
-        # Set Rect Position
-        if self.on_ground and self.on_right:
-            self.rect = self.image.get_rect(bottomright = self.rect.bottomright)
-        elif self.on_ground and self.on_left:
-            self.rect = self.image.get_rect(bottomleft = self.rect.bottomleft)
-        elif self.on_ground:
-            self.rect = self.image.get_rect(midbottom = self.rect.midbottom)
-        elif self.on_ceiling and self.on_right:
-            self.rect = self.image.get_rect(topright = self.rect.topright)
-        elif self.on_ceiling and self.on_left:
-            self.rect = self.image.get_rect(topleft = self.rect.topleft)
-        elif self.on_ceiling:
-            self.rect = self.image.get_rect(midtop = self.rect.midtop)
+        
+        self.rect = self.image.get_rect(midbottom = self.rect.midbottom)
 
     # Loop Run Particles
     def particle_run_animation(self):
@@ -122,16 +122,18 @@ class Player(pygame.sprite.Sprite):
     # Apply Gravity To Character
     def apply_gravity(self):
         self.direction.y += self.gravity
-        self.rect.y += self.direction.y
+        self.collision_rect.y += self.direction.y
          
     # Initiate Jump Velocity
     def jump(self):
         self.jump_cooldown += 1
+        self.jump_sound.play()
         self.direction.y = self.jump_speed
   
     # Register Player Damage
     def get_damage(self):
         if not self.invincible:
+            self.hit_sound.play()
             self.change_health(-10)
             self.invincible = True
             self.hurt_time = pygame.time.get_ticks()

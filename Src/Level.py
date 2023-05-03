@@ -14,6 +14,12 @@ class Level:
         self.display_surface = surface
         self.world_shift = 0
         self.current_x = None
+        
+        # Init Audio
+        self.coin_sound = pygame.mixer.Sound('Assets/Audio/coin.wav')
+        self.coin_sound.set_volume(.2)
+        self.stomp_sound = pygame.mixer.Sound('Assets/Audio/stomp.wav')
+        self.stomp_sound.set_volume(.2)
 
         # Init Overworld
         self.create_overworld = create_overworld
@@ -27,7 +33,7 @@ class Level:
         player_layout = import_csv_layout(level_data['player'])
         self.player = pygame.sprite.GroupSingle()
         self.goal = pygame.sprite.GroupSingle()
-        self.effects_group = pygame.sprite.Group()
+        self.effects_group = pygame.sprite.GroupSingle()
         self.player_setup(player_layout, change_health)
         
         # Init UI
@@ -147,25 +153,19 @@ class Level:
     # X Axis Colission Checking
     def horizontal_collision(self):
         player = self.player.sprite
-        player.rect.x += player.direction.x * player.speed
+        player.collision_rect.x += player.direction.x * player.speed
         collidable_sprites = self.terrain_sprites.sprites()
 
         for sprite in collidable_sprites:
-            if sprite.rect.colliderect(player.rect):
+            if sprite.rect.colliderect(player.collision_rect):
                 if player.direction.x < 0: 
-                    player.rect.left = sprite.rect.right
+                    player.collision_rect.left = sprite.rect.right
                     player.on_left = True
                     self.current_x = player.rect.left
                 elif player.direction.x > 0:
-                    player.rect.right = sprite.rect.left
+                    player.collision_rect.right = sprite.rect.left
                     player.on_right = True
                     self.current_x = player.rect.right
-
-        # Reset Left/Right Contact Checks
-        if player.on_left and (player.rect.left < self.current_x or player.direction.x >= 0):
-            player.on_left = False
-        if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
-            player.on_right = False
           
     # Y Axis Colission Checking          
     def vertical_collision(self):
@@ -174,22 +174,20 @@ class Level:
         collidable_sprites = self.terrain_sprites.sprites()
 
         for sprite in collidable_sprites:
-            if sprite.rect.colliderect(player.rect):
+            if sprite.rect.colliderect(player.collision_rect):
                 if player.direction.y > 0: 
-                    player.rect.bottom = sprite.rect.top
+                    player.collision_rect.bottom = sprite.rect.top
                     player.direction.y = 0
                     player.on_ground = True
                     player.jump_cooldown = 0
                 elif player.direction.y < 0:
-                    player.rect.top = sprite.rect.bottom
+                    player.collision_rect.top = sprite.rect.bottom
                     player.direction.y = 0
                     player.on_ceiling = True
 
         # Reset Ground/Ceiling Checks
         if player.on_ground and player.direction.y < 0 or player.direction.y > 1:
             player.on_ground = False
-        if player.on_ceiling and player.direction.y > 0.1:
-            player.on_ceiling = False
 
     # X Axis Camera Scroll                
     def camera_x(self):
@@ -225,6 +223,7 @@ class Level:
         collided_coins = pygame.sprite.spritecollide(self.player.sprite,self.coin_sprites,True)
         if collided_coins:
             for coin in collided_coins:
+                self.coin_sound.play()
                 self.change_coins(coin.value)
 
     # Check Enemy vs Player Collision
@@ -237,6 +236,7 @@ class Level:
                 enemy_top = enemy.rect.top
                 player_bottom = self.player.sprite.rect.bottom
                 if enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y >= 0:
+                    self.stomp_sound.play()
                     self.player.sprite.direction.y = -15
                     death_effect = enemy.death(self.effects_group)
                     enemy.kill()
@@ -248,6 +248,10 @@ class Level:
         # Background 
         self.sky.draw(self.display_surface)
         self.clouds.draw(self.display_surface,self.world_shift)
+        
+        #Particles
+        self.particle_sprite.update(self.world_shift)
+        self.particle_sprite.draw(self.display_surface)
         
         # Terrain
         self.terrain_sprites.update(self.world_shift)
@@ -264,10 +268,6 @@ class Level:
         self.enemy_sprites.draw(self.display_surface)
         self.effects_group.update(self.world_shift)
         self.effects_group.draw(self.display_surface)
-
-        #Particles
-        self.particle_sprite.update(self.world_shift)
-        self.particle_sprite.draw(self.display_surface)
 
         # Player
         self.player.update()

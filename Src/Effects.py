@@ -6,13 +6,13 @@ class Effects(pygame.sprite.Sprite):
     def __init__(self, pos, type, path):
         super().__init__()
         self.frame_index = 0
-        self.animation_speed = 0.3
+        self.animation_speed = 0.5
         
         if type == 'jump':
             self.frames = import_folder(path)
-        if type == 'land':
+        elif type == 'land':
             self.frames = import_folder(path)
-        if type == 'death':
+        elif type == 'death':
             self.frames = import_folder(path)
    
         self.image = self.frames[self.frame_index]

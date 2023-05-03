@@ -14,9 +14,16 @@ class Game:
 		self.cur_health = 100
 		self.coins = 0
 
+		# Audio
+		self.bg_music = pygame.mixer.Sound('Assets/Audio/level_music.wav')
+		self.bg_music.set_volume(.2)
+		self.overworld_music = pygame.mixer.Sound('Assets/Audio/overworld_music.wav')
+		self.overworld_music.set_volume(.2)
+
 		# Overworld
 		self.overworld = Overworld(0,self.max_level,screen,self.create_level)
 		self.status = 'overworld'
+		self.overworld_music.play(loops = -1)
 
 		# UI
 		self.ui = UI(screen)
@@ -25,6 +32,8 @@ class Game:
 	def create_level(self,current_level):
 		self.level = Level(current_level,screen,self.create_overworld,self.reset_coins,self.reset_health,self.change_coins,self.change_health)
 		self.status = 'level'
+		self.overworld_music.stop()
+		self.bg_music.play(loops = -1)
 
 	# Init Overworld Screen
 	def create_overworld(self,current_level,new_max_level):
@@ -32,6 +41,8 @@ class Game:
 			self.max_level = new_max_level
 		self.overworld = Overworld(current_level,self.max_level,screen,self.create_level)
 		self.status = 'overworld'
+		self.overworld_music.play(loops = -1)
+		self.bg_music.stop()
 
 	def reset_coins(self):
 		self.coins = 0
@@ -53,6 +64,8 @@ class Game:
 			self.max_level = 0
 			self.overworld = Overworld(0,self.max_level,screen,self.create_level)
 			self.status = 'overworld'
+			self.overworld_music.play(loops = -1)
+			self.bg_music.stop()
 
 	# Update
 	def run(self):

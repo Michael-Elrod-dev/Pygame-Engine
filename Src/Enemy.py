@@ -1,5 +1,6 @@
 import pygame
 from Src.Tiles import AnimatedTile
+from Src.Assets import import_folder
 from Src.Effects import *
 from random import randint
 
