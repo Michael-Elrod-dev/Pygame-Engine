@@ -81,7 +81,7 @@ class Game:
 # Initialize Pygame Setup
 pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Needs A Name!")
+pygame.display.set_caption("Mystic Meadows")
 clock = pygame.time.Clock()
 game = Game()
 
