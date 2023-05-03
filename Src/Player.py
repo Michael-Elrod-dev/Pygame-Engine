@@ -104,7 +104,7 @@ class Player(pygame.sprite.Sprite):
         else:
             self.direction.x = 0 # Idle
                                  
-        if keys[pygame.K_SPACE] and self.direction.y > 0 and self.jump_cooldown < 1:# Jump 
+        if keys[pygame.K_SPACE] and self.jump_cooldown < 1:# Jump 
             self.jump()
             self.init_jump_particles(self.rect.midbottom)
                  
