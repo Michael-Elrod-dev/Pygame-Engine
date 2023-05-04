@@ -1,4 +1,4 @@
-# Zombie Lab Escape - Michael Elrod
+# Mythical Meadows - Michael Elrod
 
 ## In-Game Image
 ![Game](https://github.com/Michael-Elrod-dev/Zombie-Lab/blob/main/Images/InGame.png)
