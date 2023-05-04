@@ -11,7 +11,7 @@ OS Version: Ubuntu 22.04.1 LTS or Windows 11<br>
 Python Version: Python 3.10.6<br>
 Pygame Version: Pygame 2.1.2<br>
 Environment: Visual Studio Code<br>
-Game Document: [HERE](https://github.com/Michael-Elrod-dev/Pygame-Engine/blob/main/Game%20Document.pdf)
+Game Document: [HERE](https://github.com/Michael-Elrod-dev/Pygame-Engine/blob/main/Game%20Document.pdf)<br>
 Game Video: [HERE](https://youtu.be/_754X8bVQW0)
 
 ## How to play
