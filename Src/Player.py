@@ -12,6 +12,12 @@ class Player(pygame.sprite.Sprite):
         self.image = self.animations['idle'][self.frame_index]
         self.rect = self.image.get_rect(topleft = pos)
         
+        # Collision
+        width_diff = 64 - 50
+        offset = width_diff // 2
+        new_topleft = (self.rect.x + offset, self.rect.y)
+        self.collision_rect = pygame.Rect(new_topleft, (50, self.rect.height))
+        
         # Particles
         import_particles(self)
         self.particle_frame_index = 0
@@ -25,10 +31,6 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 0.8
         self.jump_speed = -16
         self.jump_cooldown = 0
-        width_diff = 64 - 50
-        offset = width_diff // 2
-        new_topleft = (self.rect.x + offset, self.rect.y)
-        self.collision_rect = pygame.Rect(new_topleft, (50, self.rect.height))
 
         # Status
         self.status = 'idle'
